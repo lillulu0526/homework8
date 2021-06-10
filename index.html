@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav{
+            height: 80px;
+            background-color: black;
+            display: flex;
+        }
+        .nav-left{
+            width: 45%;
+            float:left;
+            display: flex;
+            justify-content:space-around;
+            align-items:center;
+            margin-left:50px;
+        }
+        .nav-right{
+            width:55%;
+            float:left;
+            display: flex;
+            justify-content:space-around;
+            align-items:center;
+            margin-right:50px;
+        }
+        .nav-left div,.nav-right div{
+            text-align: center;
+        }
+        .nav-left a{
+            font-size:20px;
+            color:white;
+            text-decoration:none;
+        }
+        .backgroundImage{
+            width:20px;
+            height:20px;
+            float:left;
+            background:transparent url(./images/8x7cejPCVRaEBEDHg7ezDs.png) no-repeat scroll -230px -26px;
+        }
+        .nav-right a{
+            font-size:12px;
+            color:white;
+            text-decoration:none;
+            float:left;
+        }
+        .backgroundImage~a{
+            color:rgba(192,192,192,1);
+        }
+        .nav-left div:nth-child(2) a{
+            color:orange;
+        }
+        .nav-right div:nth-child(7){
+            margin-right:-40px;
+        }
+        .nav-right div:nth-child(8){
+           background-image: url(./images/hRzX3n2eFHEyPd93FriVox.png);
+           width: 180px;
+           height: 25px;
+           text-align: left;
+           display: flex;
+           align-items: center;
+        }
+        #fontColor{
+            color:grey;
+            font-size: 6px;
+            padding-left: 5px;
+        }
+        .text,circle{
+            float: left;
+            margin-top: 100px;
+        }
+        .text{
+            margin-left: 350px;
+        }
+        .head{
+            font-size: 24px ;
+            font-weight: blod;
+            text-align: center;
+            line-height: 24px;
+            width:350px;
+        }
+        .center{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            width:350px;
+        }
+        .album,.singer,.share{
+            text-align: center;
+            font-size:14px;
+            float:left;
+            color:gray;
+        }
+        .album>a,.singer>a,.remark{
+            text-decoration: none;
+            font-size: 14px;
+            color:orange;
+        }
+        .share{
+            color:black;
+        }
+        .information{
+            padding-left: 20px;
+            font-size: 12px;
+        }
+        .irc{
+            border-top:rgba(0,0,0,0.3) 1px solid;
+            margin-top:10px;
+            width:800px;
+            margin-left:-250px;
+            text-align: center;
+        }
+        .irc>p{
+            text-align: center;
+            font-size: 12px;
+        }
+        .circle>div>img{
+            border-radius: 50%;
+            margin-top: 150px;
+            margin-left: 150px;
+            transform: scale(1.5);
+            border:1px solid #dedeea;
+        } 
+        .cirbig{
+            height:60px;
+            width:60px;
+            border-radius: 50%;
+            background-color:rgba(255,255,255,0.6); 
+            border: 1px solid rgba(150,150,150,0.9);
+            position:relative;
+            float:right;
+            margin-right:340px;
+            margin-top: -130px;
+        }
+        .cirsmall{
+            height:20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.6);
+            border:1px solid rgba(150,150,150,0.9);
+            margin-top:19px;
+            margin-left: 19px;
+        }
+        .playerBox{
+            height:100px;
+            margin-top: 20px;
+            width:700px;
+            margin-left: 800px;
+        }
+        .playerMid {
+            float: left;
+            width: 440px;
+            height: 60px;
+            overflow:visible;
+            position: relative;
+            margin-top: 60px;
+        }
+        .play{
+            background: url(./images/ft4wYB2sBrTzcGpwteSquz.jpg) no-repeat;
+            background-position:-110px 0;
+            width:40px;
+            height:40px;
+            margin-top: 50px;
+        }
+        .play:hover {
+            background-position: -162px 0;
+        }
+        .playerLeft {
+            float: left;
+            width: 60px;
+            height: 60px;
+            position: relative;
+        }
+        .playerMid #prograssBar {
+            float: left;
+            position: relative;
+            width: 100%;
+            height: 4px;
+            background: url(./images/prograssBg.png);
+            background-color: rgba(0,0,0,0.3);
+            margin: 10px 10px 0 0;
+            display: inline;
+        }
+        .playerMid .prograssBar {
+            width: 0px;
+            height: 4px;
+            background: #ffcd2d;
+        }
+        .playerMid #wp_bufBar {
+            width: 0px;
+            height: 4px;
+            background: url(./images/prograssBg.png);
+        }
+        .playerMid #wp_processBtn {
+            width: 10px;
+            height: 10px;
+            background: url(./images/8x7cejPCVRaEBEDHg7ezDs.png) 0 -128px;
+            position: absolute;
+            top: -3px;
+        }
+        .playerRight {
+            float: left;
+            width: 60px;
+            height: 60px;
+            position: relative;
+        }
+        #wp_playTime {
+            position: relative;
+            float: left;
+            font-size: 16px;
+            margin-top: 60px;
+            color: rgba(0,0,0,0.3);
+            display: block;
+            margin-left:10px;
+        
+        }
+        #wp_mute {
+            position: relative;
+            width: 20px;
+            height: 16px;
+            background: url(./images/ft4wYB2sBrTzcGpwteSquz.jpg) no-repeat -45px 0;
+            margin-left: 70px;
+            margin-top: 60px;
+            z-index: 13;
+        }
+        #wp_mute:hover{
+            background: url(./images/ft4wYB2sBrTzcGpwteSquz.jpg) no-repeat -70px 0;
+        }
+        .download{
+            width:200px;
+            height:50px;
+            background: url(./images/ft4wYB2sBrTzcGpwteSquz.jpg) no-repeat 0 -40px;
+            float:right;
+            margin-right: 300px;
+            margin-top:30px;
+        }
+        .load_icon{
+            height:18px;
+            width:18px;
+            background: url(./images/ft4wYB2sBrTzcGpwteSquz.jpg) no-repeat 0 0;
+            margin-top: 18px;
+            margin-left:30px;
+        }
+        .textd{
+            color:rgba(0,0,0,0.7);
+            font-size: 14px;
+            margin-left: 55px;
+            margin-top: -20px;
+        }
+        .pinglun{
+            height:80px;
+            width: 300px;
+            margin-top: 120px;
+            margin-left: 900px;
+        }
+        .pinglun_left{
+            height:50px;
+            width:50px;
+        }
+        .pinglun_left>img{
+            height:50px;
+            height:50px;
+            border-radius: 50%; 
+            margin-top: 20px;
+        }
+        .pinglun_right{
+            float:left;
+            position: relative;
+            margin-top: -20px;
+        }
+        .triangle {
+           width: 0;
+           height: 0;
+           border-top: 10px solid transparent;
+           border-bottom: 10px solid transparent;
+           border-right: 20px solid #dedeea;;
+           margin-left: 65px;
+           margin-top:5px;
+       }
+        .rec {
+            width: 260px;
+            height: 60px;
+            background: #dedeea;
+            border-radius:15px;
+            margin-left:84px;
+            margin-top: -50px;
+        }
+        .rec p:nth-child(1){
+            color:rgba(180,180,180,0.7);
+            font-size:14px;
+            padding-left: 15px;
+            padding-top: 10px;
+        }
+        .down{
+            width: 225px;
+            height: 25px;
+            margin-top: -15px;
+            margin-left:20px;
+        }
+        .yuedong>img{
+            height:16px;
+            width:16px;
+        }
+        .name{
+            font-size: 12px;
+            margin-top:-17px;
+            margin-left:20px;
+        }
+        .live a{
+            text-decoration:none;
+            font-size: 13px;
+            color:purple;
+            float:right;
+            margin-top:-17px;
+        }
+        .comments{
+            margin-top:150px;
+        }
+        .innerbox{
+            width:900px;
+            margin-left:150px;
+        }
+        .span1{
+            color:gray;
+            font-size:14px;
+        }
+        .span2{
+            color:gray;
+            font-size:12px;
+        }
+        .commentsarea{
+            margin-top:20px;
+            border-top:1px solid gray;
+            border-bottom:1px solid gray;
+            height:300px;
+        }
+        .left0{
+            height:60px;
+            width:60px;
+            margin-top:20px;
+        }
+        .left0 >img{
+           height:60px;
+           width:60px;
+        }
+        .right0{
+            height:100px;
+            width:600px;
+            margin-left:60px;
+        }
+        .right0>textarea{
+            height:140px;
+            width:805px;
+            margin-top: -60px;
+            margin-left:20px;
+            text-align: left;
+            padding-top:10px;
+            padding-left:10px;
+            color:gray;
+        }
+        .down0>img{
+            height:17px;
+            width: 17px;
+            margin-left: 80px;
+            margin-top: 5px;
+        }
+        .down0>button{
+            float:right;
+            height:25px;
+            width:70px;
+            background-color: #f0bc11;
+            color:white;
+            border: none;
+        }
+        .down0>span{
+            font-size: 12px;
+            color:gray;
+            float: right;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        .up{
+            font-size:14px;
+            color:black;
+            margin-top: 50px;
+        }
+        .displayarea{
+            margin-top:20px;
+        }
+        .left>img{
+            height:60px;
+            width:60px;
+        }
+        .left{
+            background: url(./images/fDRw8gm9XazHuqiccYQiyb.jpg);
+            height:60px;
+            width:60px;
+        }
+        .right1>.names{
+            color:#ffcd2d;
+            font-size:14px;
+            width:200px;
+            margin-top:-60px;
+            margin-left:70px;
+        }
+        .shares{
+            float: right;
+            margin-top: -20px;
+        }
+        .shares>a{
+            color:gray;
+            font-size: 12px;
+            text-decoration:none;
+        }
+        .right2{
+            height:60px;
+            font-size: 13px;
+            margin-left:70px;
+            margin-top:10px;
+        }
+        .time{
+            height:18px;
+            width:150px;
+            margin-left:70px;
+            margin-top:-30px;
+            font-size:12px;
+            color:gray;
+        }
+        .caozuo{
+            float:right;
+            font-size: 13px;
+            font:black;
+            width:120px;
+            height:15px;
+            margin-top:-20px;
+        }
+        .delete{
+            float:left;
+            margin-right: 10px;
+        }
+        .dianzan{
+            margin-right:10px;
+        } 
+        .dianzanplus{
+            margin-left:40px;
+        }
+        .reply{
+            float:right;
+            margin-top:-20px;
+        }
+        .com{
+            border-bottom:1px solid #dedeea;
+            margin-bottom: 20px;
+            height: 80px;
+            width:900px;
+        }
+        .page-con{
+            width:100%;
+            height:25px;
+        }
+        .page{
+            width:500px;
+            height:25px;
+            text-align: center;
+            margin-left: 500px;
+        }
+        .page a{
+            text-decoration:none;
+            color:black;
+            font-size:13px;
+        }
+        .page>div,.gap{
+            height:25px;
+            width:25px;
+            border-radius: 50%;
+            float:left;
+            margin-right:10px;
+        }
+        .page>div{
+            background-color: rgba(202,202,202,0.4);
+        }
+        .page>div:hover,.page>div:nth-child(2){
+            background-color:#f0bc11;
+        }
+        .page>div:hover a,.page>div:nth-child(2) a{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-left">
+            <div><img src="./images/EBbGwpYnuxzNj2n4pu4QWG.jpg" alt=""></div>
+            <div><a href="#">首页</a></div>
+            <div><a href="#">榜单</a></div>
+            <div><a href="#">歌手</a></div>
+            <div><a href="#">下载酷我客户端</a></div>
+        </div>
+        <div class="nav-right">
+            <div><div class="backgroundImage"></div><a href="#" >美女秀</a></div>
+            <div><div class="backgroundImage"></div><a href="#" >酷我耳机</a></div>
+            <div><div class="backgroundImage"></div><a href="#" >VIP会员</a></div>
+            <div><div class="backgroundImage"></div><a href="#" >听</a></div>
+            <div></a><a href="#">更多服务</a></div>
+            <div></a><a href="#">登录</a></div>
+            <div></a><a href="#">^</a></div>
+            <div><a href="#" id="fontColor">找到好音乐</a></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="text">
+            <div class="head">喜羊羊</div>
+            <div class="center">
+                <div class="album">专辑：<a href="#">儿歌大全&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+                <div class="singer">歌手：<a href="#">华语群星&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+                <div class="share">分享</div>
+                <div class="remark">&nbsp;&nbsp;<img src="./images/bbHRbrtQkXjFLRSChCcxPi.jpg" alt="">&nbsp;&nbsp;评论</div>
+            </div>
+            <div class="information">上传时间：2015-10-02歌曲来源：民大相思湖网球社</div>
+            <div class="irc">
+                <p>在所有天气&nbsp;&nbsp;拥有叫人&nbsp;&nbsp;大笑的力量</p>
+                <p>虽然我只是羊</p>
+                <p>虽然我只是羊</p>
+                <p>喜羊羊&nbsp;&nbsp;美羊羊&nbsp;&nbsp;懒羊羊&nbsp;&nbsp;沸羊羊</p>
+                <p>慢羊羊&nbsp;&nbsp;软绵绵&nbsp;&nbsp;红太狼&nbsp;&nbsp;灰太狼</p>
+            </div>
+        </div>
+        <div class="circle">
+            <div>
+                <img src="./images/nJA5uhS7NxNWUhVyAzNN5q.jpg" alt="" id="cd">
+                <div class="cirbig">
+                    <div class="cirsmall">
+                    </div>
+                </div>
+            </div>
+            <div class="playerBox">
+                <audio autoplay="autoplay" id="mymusic">
+                    <source src="./喜羊羊.mp3" type="audio/mp3"></audio>
+                <div class="playerLeft">
+                    <div class="play" id="wp_playBtn"></div>
+                </div>
+                <div class="playerMid">
+                    <div id="prograssBar">
+                      <div id="wp_bufBar">
+                        <div class="prograssBar" id="wp_processBar">
+                        </div>
+                        <a href="##" class="schedule_btn" id="wp_processBtn" style="left: 0;"></a>
+                      </div>
+                    </div>
+                </div>
+                <div class="playerRight">
+                    <p id="wp_playTime" class="opacity">00.00</p>
+                    <div class="sound" id="wp_mute">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="download">
+            <div class="load_icon">
+            </div>
+            <div class="textd">
+                免费下载这首歌曲
+            </div>
+        </div>
+        <div class="pinglun">
+            <div class="pinglun_left">
+                <img src="./images/郭子仪.jpg" alt="">
+            </div>
+            <div class="pinglun_right">
+                <div class="triangle ">
+                </div>
+                <div class="rec">
+                    <p>郭子仪——H5班</p>
+                    <div class="down">
+                        <div class="yuedong"><img src="./images/gif.gif" alt=""></div>
+                        <div class="name">喜羊羊与灰太狼</div>
+                        <div class="live"><a href="#">去现场></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comments">
+        <div class="innerbox">
+            <span class="span1">评论</span>
+            <span class="span2">1703条评论</span>
+            <div class="commentsarea">
+                <div class="left0">
+                    <img src="./images/郭子仪.jpg" alt="" id="userimg0">
+                </div>
+                <div class="right0">
+                    <textarea  cols="30" rows="6"
+                    onfocus="if(value=='分享你的音乐见解'){value=''}"
+                    onblur="if (value ==''){value='分享你的音乐见解'}" onclick="{value=''}" id="opinion">分享你的音乐见解</textarea>
+                </div>
+                <div class="down0">
+                    <img src="./images/R65038c149377a0e1ca4c0c1f1c49abf3.jfif" alt="">
+                    <button id="submit">评论</button>
+                    <span>已输入0个字</span>
+                </div>
+                <div class="up">
+                    精彩评论
+                </div>
+            </div>
+            <div class="displayarea"  id="disarea">
+                <div class="com">
+                    <div class="left"><img src="./images/郭子仪.jpg" alt="">
+                    </div>
+                    <div class="right1">
+                        <div class="names">郭子仪</div> 
+                        <div class="shares"><a href="#">分享</a></div>
+                    </div>
+                    <div class="right2" >Too</div>
+                    <div class="right3">
+                        <div class="time" >2021-6-9-10:33</div>
+                        <div class="caozuo">
+                            <div class="delete">删除</div>
+                            <div class="dianzan">163 <img src="./images/bg2.jpg" alt=""></div>
+                            <div class="reply">回复</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="com">
+                    <div class="left"><img src="./images/fDRw8gm9XazHuqiccYQiyb.jpg" alt="">
+                    </div>
+                    <div class="right1">
+                        <div class="names">Forget</div> 
+                        <div class="shares"><a href="#">分享</a></div>
+                    </div>
+                    <div class="right2" >我喜欢很多歌曲，也喜欢很多歌手</div>
+                    <div class="right3">
+                        <div class="time">2021-6-8-16:43</div>
+                        <div class="caozuo">
+                            <div class="dianzanplus">149 <img src="./images/bg2.jpg" alt=""></div>
+                            <div class="reply">回复</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="com">
+                    <div class="left"><img src="./images/fDRw8gm9XazHuqiccYQiyb.jpg" alt="">
+                    </div>
+                    <div class="right1">
+                        <div class="names">亚里士多德</div> 
+                        <div class="shares"><a href="#">分享</a></div>
+                    </div>
+                    <div class="right2" >学校晚会表演这首歌曲</div>
+                    <div class="right3">
+                        <div class="time" >2021-6-9-19:49</div>
+                        <div class="caozuo">
+                            <div class="dianzanplus">106 <img src="./images/bg2.jpg" alt=""></div>
+                            <div class="reply">回复</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-con">
+        <div class="page">
+                <div><a class="previous_page" href="#"> < </a></div>
+                        <div><a href="#" >1</a></div>
+                        <div><a href="#" >2</a></div>
+                        <div><a href="#" >3</a></div>
+                        <span class="gap">…</span>
+                        <div><a href="?#" a>17</a></div>
+               <div><a class="next_page" href="#" > > </a></div>
+        </div>
+    </div>
+    <script>
+        var btn=document.getElementById("wp_playBtn");
+        var prograssBar=document.getElementById("prograssBar");
+        var currentProcess=document.getElementById("wp_processBar");
+        var point=document.getElementById("wp_processBtn");
+        var timer =document.getElementById("wp_playTime");
+        var mutedBtn=document.getElementById("wp_mute");
+        var mymusic=document.getElementById("mymusic");
+        var cd =document.getElementById("cd");
+        var submit = document.getElementById("submit");
+        var opinion = document.getElementById("opinion");
+        var time =document.getElementsByClassName("time");
+        var content =document.getElementsByClassName("right2");
+        var disarea=document.getElementById("disarea");
+
+        //确保打开页面未播放
+        window.onload=function(){
+            mymusic.autoplay=false;
+        }
+        //开始暂停事件
+        var count=0;
+        wp_playBtn.onclick=function(){
+            if(mymusic.paused){
+                mymusic.play();
+                this.style.backgroundPosition="-207px 0";
+                timeToMinute();
+                prograss();
+                recall();
+            }else{
+                mymusic.pause();
+                this.style.backgroundPosition="-110px 0px";
+            }
+            count++;
+            fn();
+            // recall();
+        }
+        function fn(){
+            if(count%2==1){
+                rotate();
+            }else{
+                stop();
+            }
+        }
+        //图片旋转与停止
+        var rotateDeg=0;
+        function rotate() {
+            interVal = setInterval(function () {
+                rotateDeg += 1;
+                cd.style.transform = "rotate(" + rotateDeg + "deg) scale(1.5)";
+                cd.style.transition = "0.05s linear";
+            }, 50);
+        }
+        function stop() {
+                cd.style.transform = "scale(1.5)";
+                clearInterval(interVal);
+        }
+        //进度条的移动
+        function prograss(){
+            var pro = setInterval(function(){
+            wp_processBar.style.width=""+parseFloat(mymusic.currentTime/mymusic.duration)*440+"px";
+            wp_processBtn.style.left=""+parseFloat(mymusic.currentTime/mymusic.duration)*440+"px";
+            wp_processBar.style.backgroundColor="#ffcd2d";
+            },1000)
+        }
+        //将获取到的时间转化成分钟和秒的函数
+        function timeToMinute(){
+        var timer=setInterval(function(){
+            var t;
+            if(mymusic.currentTime>-1){
+                var min = Math.floor(mymusic.currentTime/60);
+                var sec = mymusic.currentTime%60;
+                if(min<10){
+                t='0'+min+":";
+                }else{
+                t=min+":";
+                }
+                if(sec<10){t+="0";}
+                t+=sec.toFixed(2);
+            }
+            else{
+                clearInterval(timer);
+            }
+            t=t.substring(0,t.length-3);
+            wp_playTime.innerHTML=t;
+            },1000)
+        }
+        //当达到播放时长时清空进度条
+        function recall(){
+            if(mymusic.currentTime==mymusic.duration){
+                currentProcess.style.width="0";
+                point.style.left="0";
+            }
+        }
+        //点击静音事件
+        wp_mute.onclick=function(){
+            if(mymusic.muted==true){
+            mymusic.muted=false;
+            }
+            else{
+            mymusic.muted=true;
+            }
+        }
+        //点击事件
+        submit.onclick=function(){
+           saveNotes();
+           getNotes();
+        }
+        //获取点击事件
+        function getNowTime(){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            if (hour<10) {
+                    hour='0'+hour;
+                }
+                if (minute<10) {
+                    minute='0'+minute;
+                }
+            var time =year+"-"+month+"-"+day+"-"+hour+":"+minute;
+            return time;
+        }
+        var jsonArrry=[];
+        var arr=[];
+        //保存到本地存储
+        function saveNotes(){
+            if(window.localStorage){
+                var obj={
+                    "timer":getNowTime(),
+                    "opinion":opinion.value
+                }
+                var objStr=JSON.stringify(obj);
+                var objStr1=JSON.parse(objStr);
+                jsonArrry.push(objStr1);
+                arr=JSON.stringify(jsonArrry);
+                localStorage.location=arr;
+            }
+            else{
+                alert("浏览器不支持localstorage");
+            }
+        }
+        //从本地存储获取
+        function getNotes(){
+			var arr = localStorage.getItem("location");
+			arr = JSON.parse(arr);
+			for(var i=0;i<arr.length;i++){
+            time[i].innerHTML=arr[i].timer;
+            content[i].innerHTML=arr[i].opinion;
+			}
+		}
+        //登录页面获取本地存储数据
+        window.onload=function(){
+            if(window.localStorage){
+                getNotes();
+            }
+            else{
+                alert("浏览器不支持localstorage");
+            }
+    }
+    </script>
+</body>
+</html>
